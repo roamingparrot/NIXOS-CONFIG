@@ -1,11 +1,19 @@
 { config, lib, pkgs, ... }:
+
 {
-  environment.systemPackages = with pkgs; [                                                              
-     floorp-bin
-     nwg-displays
-     spotify
-     vesktop
-     obs-studio
-     xdg-desktop-portal-hyprland
-  ]; 
+  services.flatpak.enable = true;
+  programs.steam.enable = true;
+  security.polkit.enable = true;
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
 }
