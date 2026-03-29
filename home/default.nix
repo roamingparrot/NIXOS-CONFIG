@@ -10,11 +10,13 @@
       ./rice.nix
       ./apps.nix
       ./audio.nix
+      ./hyprland.nix
     ];
 
     home.username = "roaming";
     home.homeDirectory = "/home/roaming";
-    home.stateVersion = "25.11";
+    home.stateVersion = "25.05";
+    home.packages = [ pkgs.home-manager ];
     programs.home-manager.enable = true;
   };
 }
